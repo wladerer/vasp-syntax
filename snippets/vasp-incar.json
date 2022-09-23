@@ -74,6 +74,7 @@
 	"prefix": "LSORBIT",
 	"body": [
 		"LSORBIT = .TRUE.",
+		"ISYM   = -1            # turns off symmetry",
 		"ICHARG = 11            # non selfconsistent run, read CHGCAR",
 		"LMAXMIX = 4            # for d-elements increase LMAXMIX to 4, f-elements: LMAXMIX = 6",
 		"                       # you need to set LMAXMIX already in the collinear calculation",
@@ -81,6 +82,31 @@
 		"$0"
 	],
 	"description": "General settings for adding spin orbit coupling. Should be applied after a self consistent run"
+	},
+
+	"DFT + U": {
+	"prefix": ["LDAU","LDAUTYPE","LDAUL","LDAUU","LDAUJ","LDAUPRINT"],
+	"body": [
+		"# DFT + U parameters",
+		"LDAU      = .TRUE.     # switches on DFT+U",
+		"LDAUTYPE  = ${1|2,1,4} # specifies the DFT+U variant that will be used",
+		"LDAUL     = 2 -1       # specifies the l-quantum number for which the on-site interaction is added",     
+		"LDAUU     = 2.00 0.00  # specifies the strength of the effective on-site Coulomb interactions",
+		"LDAUJ     = 0.00 0.00  # specifies the strength of the effective on-site exchange interactions.",
+		"LDAUPRINT = 0          # controls the verbosity of the DFT+U routines",
+		"LMAXMIX   = 4          # controls up to which l-quantum number the one-center PAW charge densities are passed through the charge density mixer",
+	    "",
+		"$0"
+	],
+	"description": "Declare DFT + U Parameters"
+	},
+
+	"INCAR Comment": {
+	"prefix": "SYSTEM",
+	"body": [
+		"SYSTEM = $0"
+	],
+	"description": "Add a title to your INCAR"
 	}
 	
 }
